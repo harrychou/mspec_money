@@ -11,8 +11,10 @@ namespace mspec_demo.specs
             () =>
                 {
                     Dollar five = new Dollar(5);
-                    five.Times(2);
-                    five.Amount.Equals(10);
+                    Dollar product = five.Times(2);
+                    product.Amount.ShouldEqual(10);
+                    product = five.Times(3);
+                    product.Amount.ShouldEqual(15);
                 };
     }
 

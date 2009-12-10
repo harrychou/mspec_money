@@ -65,7 +65,7 @@
     <Compile Include="DollarSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ToDo.htm" />
+    <Content Include="ToDo.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mspec_money\mspec_money.csproj">
