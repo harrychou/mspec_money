@@ -3,3 +3,7 @@
 make 'amount' private
 (*) dollar side-effect?
 money rounding?
+(*)equals()
+hashcode()
+equal null
+equal object

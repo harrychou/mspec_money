@@ -14,5 +14,11 @@ namespace mspec_money
         {
             return new Dollar(Amount * multiplier);
         }
+
+        public override bool Equals(object obj)
+        {
+            var dollar = (Dollar) obj;
+            return dollar.Amount == Amount;
+        }
     }     
 }

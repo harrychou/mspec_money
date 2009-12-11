@@ -16,6 +16,13 @@ namespace mspec_demo.specs
                     product = five.Times(3);
                     product.Amount.ShouldEqual(15);
                 };
+
+        private It should_be_able_to_test_equality =
+            () =>
+                {
+                    new Dollar(5).Equals(new Dollar(5)).ShouldBeTrue();
+                    new Dollar(5).Equals(new Dollar(6)).ShouldBeFalse();
+                };
     }
 
 }
