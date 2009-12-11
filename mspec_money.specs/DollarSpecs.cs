@@ -7,7 +7,7 @@ namespace mspec_demo.specs
     [Subject("Dollar")]
     public class DollarSpecs
     {
-        private It should_be_able_to_do_multiplication = 
+        private It should_be_able_to_test_dollar_multiplication = 
             () =>
                 {
                     Money five = Money.Dollar(5);
@@ -26,12 +26,20 @@ namespace mspec_demo.specs
                 };
 
         private It should_be_able_to_test_franc_multiplication =
-        () =>
-        {
-            Money five = Money.Franc(5);
-            five.Times(2).ShouldEqual(Money.Franc(10));
-            five.Times(3).ShouldEqual(Money.Franc(15));
-        };
+            () =>
+                {
+                    Money five = Money.Franc(5);
+                    five.Times(2).ShouldEqual(Money.Franc(10));
+                    five.Times(3).ShouldEqual(Money.Franc(15));
+                };
+
+        private It should_be_able_to_test_Currency =
+            () =>
+                {
+                    Money.Dollar(1).Currency.ShouldEqual("USD");
+                    Money.Franc(1).Currency.ShouldEqual("CHF");
+                };
+
     }
 
 }

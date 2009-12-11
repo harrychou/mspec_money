@@ -1,10 +1,20 @@
-using System;
-
 namespace mspec_money
 {
     public abstract class Money
     {
         protected int _amount;
+        protected string _currency;
+
+        protected Money(int amount, string currency)
+        {
+            _amount = amount;
+            _currency = currency;
+        }
+
+        public string Currency 
+        {
+            get { return _currency; }
+        }
 
         public override bool Equals(object obj)
         {
@@ -14,41 +24,39 @@ namespace mspec_money
 
         public static Money Dollar(int amount)
         {
-            return new Dollar(amount);
+            return new Dollar(amount, "USD");
         }
 
         public abstract Money Times(int multiplier);
 
         public static Money Franc(int amount)
         {
-            return new Franc(amount);
+            return new Franc(amount, "CHF");
         }
     }
 
     public class Dollar: Money
     {
-        public Dollar(int amount)
+        public Dollar(int amount, string currency): base(amount, currency)
         {
-            _amount = amount;
         }
 
         public override Money Times(int multiplier)
         {
-            return new Dollar(_amount * multiplier);
+            return Money.Dollar(_amount * multiplier);
         }
 
     }
 
     public class Franc: Money
     {
-        public Franc(int amount)
+        public Franc(int amount, string currency): base(amount, currency)
         {
-            _amount = amount;
         }
 
         public override Money Times(int multiplier)
         {
-            return new Franc(_amount * multiplier);
+            return Money.Franc(_amount * multiplier);
         }
     } 
 }

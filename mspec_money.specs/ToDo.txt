@@ -12,4 +12,5 @@ Dollar/Franc dupllication
 (*) Common equals
 Common times
 (*) Compare Francs with Dollars
-Currency?
+(*) Currency?
+Delete should_be_able_to_test_franc_multiplication?
