@@ -9,7 +9,7 @@ namespace mspec_money
         public override bool Equals(object obj)
         {
             var money = (Money)obj;
-            return money._amount == _amount;
+            return (money.GetType() == GetType() && money._amount == _amount);
         }
     }
 
