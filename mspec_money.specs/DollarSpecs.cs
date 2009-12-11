@@ -21,6 +21,14 @@ namespace mspec_demo.specs
                     new Dollar(5).Equals(new Dollar(5)).ShouldBeTrue();
                     new Dollar(5).Equals(new Dollar(6)).ShouldBeFalse();
                 };
+
+        private It should_be_able_to_test_franc_multiplication =
+        () =>
+        {
+            Franc five = new Franc(5);
+            five.Times(2).ShouldEqual(new Franc(10));
+            five.Times(3).ShouldEqual(new Franc(15));
+        };
     }
 
 }
