@@ -2,7 +2,7 @@ using System;
 
 namespace mspec_money
 {
-    public class Money
+    public abstract class Money
     {
         protected int _amount;
 
@@ -10,6 +10,18 @@ namespace mspec_money
         {
             var money = (Money)obj;
             return (money.GetType() == GetType() && money._amount == _amount);
+        }
+
+        public static Money Dollar(int amount)
+        {
+            return new Dollar(amount);
+        }
+
+        public abstract Money Times(int multiplier);
+
+        public static Money Franc(int amount)
+        {
+            return new Franc(amount);
         }
     }
 
@@ -20,7 +32,7 @@ namespace mspec_money
             _amount = amount;
         }
 
-        public Dollar Times(int multiplier)
+        public override Money Times(int multiplier)
         {
             return new Dollar(_amount * multiplier);
         }
@@ -34,7 +46,7 @@ namespace mspec_money
             _amount = amount;
         }
 
-        public Franc Times(int multiplier)
+        public override Money Times(int multiplier)
         {
             return new Franc(_amount * multiplier);
         }
