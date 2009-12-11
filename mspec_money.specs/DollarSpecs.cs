@@ -11,10 +11,8 @@ namespace mspec_demo.specs
             () =>
                 {
                     Dollar five = new Dollar(5);
-                    Dollar product = five.Times(2);
-                    product.Amount.ShouldEqual(10);
-                    product = five.Times(3);
-                    product.Amount.ShouldEqual(15);
+                    five.Times(2).ShouldEqual(new Dollar(10));
+                    five.Times(3).ShouldEqual(new Dollar(15));
                 };
 
         private It should_be_able_to_test_equality =
