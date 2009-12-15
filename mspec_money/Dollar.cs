@@ -1,11 +1,13 @@
+using System;
+
 namespace mspec_money
 {
-    public abstract class Money
+    public class Money
     {
         protected int _amount;
         protected string _currency;
 
-        protected Money(int amount, string currency)
+        public Money(int amount, string currency)
         {
             _amount = amount;
             _currency = currency;
@@ -19,44 +21,27 @@ namespace mspec_money
         public override bool Equals(object obj)
         {
             var money = (Money)obj;
-            return (money.GetType() == GetType() && money._amount == _amount);
+            return (money.Currency.Equals(Currency) && money._amount.Equals(_amount));
         }
 
         public static Money Dollar(int amount)
         {
-            return new Dollar(amount, "USD");
+            return new Money(amount, "USD");
         }
 
-        public abstract Money Times(int multiplier);
+        public virtual Money Times(int multiplier)
+        {
+            return new Money(_amount * multiplier, Currency);
+        }
 
         public static Money Franc(int amount)
         {
-            return new Franc(amount, "CHF");
+            return new Money(amount, "CHF");
+        }
+
+        public override string ToString()
+        {
+            return _amount + " " + Currency;
         }
     }
-
-    public class Dollar: Money
-    {
-        public Dollar(int amount, string currency): base(amount, currency)
-        {
-        }
-
-        public override Money Times(int multiplier)
-        {
-            return Money.Dollar(_amount * multiplier);
-        }
-
-    }
-
-    public class Franc: Money
-    {
-        public Franc(int amount, string currency): base(amount, currency)
-        {
-        }
-
-        public override Money Times(int multiplier)
-        {
-            return Money.Franc(_amount * multiplier);
-        }
-    } 
 }

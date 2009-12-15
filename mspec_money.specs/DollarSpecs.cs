@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using Machine.Specifications;
 using mspec_money;
@@ -40,6 +41,13 @@ namespace mspec_demo.specs
                     Money.Franc(1).Currency.ShouldEqual("CHF");
                 };
 
-    }
+        private It should_be_able_to_test_difference_class_equality =
+            () =>
+                {
+                    var money = new Money(10, "CHF");
 
+                    var expected = Money.Franc(10);
+                    money.ShouldEqual(expected);
+                };
+    }
 }
