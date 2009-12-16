@@ -24,14 +24,6 @@ namespace mspec_demo.specs
                     Money.Franc(5).Equals(Money.Dollar(5)).ShouldBeFalse();
                 };
 
-        private It should_be_able_to_test_franc_multiplication =
-            () =>
-                {
-                    Money five = Money.Franc(5);
-                    five.Times(2).ShouldEqual(Money.Franc(10));
-                    five.Times(3).ShouldEqual(Money.Franc(15));
-                };
-
         private It should_be_able_to_test_Currency =
             () =>
                 {
