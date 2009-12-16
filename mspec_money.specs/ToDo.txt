@@ -13,4 +13,4 @@ equal object
 (*) Common times
 (*) Compare Francs with Dollars
 (*) Currency?
-Delete should_be_able_to_test_franc_multiplication?
+(*) Delete should_be_able_to_test_franc_multiplication?
