@@ -58,5 +58,21 @@ namespace mspec_demo.specs
                     reduced.Equals(Money.Dollar(7)).ShouldBeTrue();
                 };
 
+        private It test_reduce_money_to_different_currency = 
+            () =>
+                {
+                    Bank bank = new Bank();
+                    bank.AddRate("CHF", "USD", 2);
+                    Money result = bank.Reduce(Money.Franc(2), "USD");
+                    result.ShouldEqual(Money.Dollar(1));
+                };
+
+        private It test_reduce_money_to_same_currency =
+            () =>
+                {
+                    Bank bank = new Bank();
+                    Money result = bank.Reduce(Money.Dollar(2), "USD");
+                    result.ShouldEqual(Money.Dollar(2));
+                };
     }
 }
