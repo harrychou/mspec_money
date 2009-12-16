@@ -44,9 +44,18 @@ namespace mspec_demo.specs
                 {
                     Money five = new Money(5, "USD");
                     Bank bank = new Bank();
-                    Expression sum = five.Plus(five);
+                    Sum sum = (Sum) five.Plus(five);
                     Money reduced = bank.Reduce(sum, "USD");
                     reduced.ShouldEqual(Money.Dollar(10));
+                };
+
+        private It test_reduce_sum =
+            () =>
+                {
+                    Expression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+                    Bank bank = new Bank();
+                    var reduced = bank.Reduce(sum, "USD");
+                    reduced.Equals(Money.Dollar(7)).ShouldBeTrue();
                 };
 
     }

@@ -18,10 +18,23 @@ namespace mspec_money
             get { return _currency; }
         }
 
+        public int Amount
+        {
+            get 
+            {
+                return _amount;
+            }
+        }
+
         public override bool Equals(object obj)
         {
             var money = (Money)obj;
             return (money.Currency.Equals(Currency) && money._amount.Equals(_amount));
+        }
+
+        public Money Reduce(string to)
+        {
+            return this;
         }
 
         public static Money Dollar(int amount)
@@ -44,19 +57,9 @@ namespace mspec_money
             return _amount + " " + Currency;
         }
 
-        public Money Plus(Money addend)
+        public Expression Plus(Money addend)
         {
-            return new Money(_amount + addend._amount, Currency);
+            return new Sum(this, addend);
         }
     }
-
-    public class Bank{
-        public Money Reduce(Expression expression, string currency)
-        {
-            return Money.Dollar(10);
-        }
-    }
-
-    public interface Expression{ }
-
 }
