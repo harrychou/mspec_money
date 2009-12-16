@@ -21,8 +21,6 @@ namespace mspec_demo.specs
                 {
                     Money.Dollar(5).Equals(Money.Dollar(5)).ShouldBeTrue();
                     Money.Dollar(5).Equals(Money.Dollar(6)).ShouldBeFalse();
-                    Money.Franc(5).Equals(Money.Franc(5)).ShouldBeTrue();
-                    Money.Franc(5).Equals(Money.Franc(6)).ShouldBeFalse();
                     Money.Franc(5).Equals(Money.Dollar(5)).ShouldBeFalse();
                 };
 
@@ -45,7 +43,6 @@ namespace mspec_demo.specs
             () =>
                 {
                     var money = new Money(10, "CHF");
-
                     var expected = Money.Franc(10);
                     money.ShouldEqual(expected);
                 };
