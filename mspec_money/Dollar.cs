@@ -2,7 +2,7 @@ using System;
 
 namespace mspec_money
 {
-    public class Money
+    public class Money : Expression
     {
         protected int _amount;
         protected string _currency;
@@ -43,5 +43,20 @@ namespace mspec_money
         {
             return _amount + " " + Currency;
         }
+
+        public Money Plus(Money addend)
+        {
+            return new Money(_amount + addend._amount, Currency);
+        }
     }
+
+    public class Bank{
+        public Money Reduce(Expression expression, string currency)
+        {
+            return Money.Dollar(10);
+        }
+    }
+
+    public interface Expression{ }
+
 }

@@ -38,5 +38,16 @@ namespace mspec_demo.specs
                     var expected = Money.Franc(10);
                     money.ShouldEqual(expected);
                 };
+
+        private It test_simple_addition =
+            () =>
+                {
+                    Money five = new Money(5, "USD");
+                    Bank bank = new Bank();
+                    Expression sum = five.Plus(five);
+                    Money reduced = bank.Reduce(sum, "USD");
+                    reduced.ShouldEqual(Money.Dollar(10));
+                };
+
     }
 }
