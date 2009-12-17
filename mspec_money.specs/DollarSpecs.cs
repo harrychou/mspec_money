@@ -74,5 +74,16 @@ namespace mspec_demo.specs
                     Money result = bank.Reduce(Money.Dollar(2), "USD");
                     result.ShouldEqual(Money.Dollar(2));
                 };
+
+        private It test_mixed_addition =
+            () =>
+                {
+                    Expression fiveDollars = Money.Dollar(5);
+                    Expression tenFrancs = Money.Franc(10);
+                    Bank bank = new Bank();
+                    bank.AddRate("CHF", "USD", 2);
+                    Money result = bank.Reduce(fiveDollars.Plus(tenFrancs), "USD");
+                    result.ShouldEqual(Money.Dollar(10));
+                };
     }
 }

@@ -43,7 +43,7 @@ namespace mspec_money
             return new Money(amount, "USD");
         }
 
-        public virtual Money Times(int multiplier)
+        public virtual Expression Times(int multiplier)
         {
             return new Money(_amount * multiplier, Currency);
         }
@@ -58,7 +58,7 @@ namespace mspec_money
             return _amount + " " + Currency;
         }
 
-        public Expression Plus(Money addend)
+        public Expression Plus(Expression addend)
         {
             return new Sum(this, addend);
         }

@@ -3,12 +3,12 @@
 namespace mspec_money
 {
     public class Sum: Expression {
-        private readonly Money _augend;
-        private readonly Money _addend;
-        public Money Augend { get { return _augend; } }
-        public Money Addend { get { return _addend; } }
+        private readonly Expression _augend;
+        private readonly Expression _addend;
+        public Expression Augend { get { return _augend; } }
+        public Expression Addend { get { return _addend; } }
 
-        public Sum(Money augend, Money addend)
+        public Sum(Expression augend, Expression addend)
         {
             _augend = augend;
             _addend = addend;
@@ -16,7 +16,17 @@ namespace mspec_money
 
         public Money Reduce(Bank bank, string to)
         {
-            return new Money(_augend.Amount + _addend.Amount, to);
+            return new Money(_augend.Reduce(bank, to).Amount + _addend.Reduce(bank, to).Amount, to);
+        }
+
+        public Expression Plus(Expression addend)
+        {
+            return null;
+        }
+
+        public Expression Times(int multiplier)
+        {
+            return null;
         }
     }
 }
