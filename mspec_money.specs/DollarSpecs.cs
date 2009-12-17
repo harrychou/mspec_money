@@ -85,5 +85,25 @@ namespace mspec_demo.specs
                     Money result = bank.Reduce(fiveDollars.Plus(tenFrancs), "USD");
                     result.ShouldEqual(Money.Dollar(10));
                 };
+
+        private It test_sum_times =
+            () =>
+                {
+                    Expression fiveDollars = Money.Dollar(5);
+                    Expression tenFrancs = Money.Franc(10);
+                    Bank bank = new Bank();
+                    bank.AddRate("CHF", "USD", 2);
+                    Expression sum = fiveDollars.Plus(tenFrancs);
+                    Money result = bank.Reduce(sum.Times(2), "USD");
+                    result.ShouldEqual(Money.Dollar(20));
+                };
+
+//        private It test_plus_same_currency_should_return_money =
+//            () =>
+//                {
+//                    Expression sum = Money.Dollar(5).Plus(Money.Dollar(5));
+//                    sum.ShouldBeOfType(typeof(Money));
+//                };
+
     }
 }

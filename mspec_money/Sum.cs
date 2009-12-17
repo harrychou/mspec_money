@@ -21,12 +21,12 @@ namespace mspec_money
 
         public Expression Plus(Expression addend)
         {
-            return null;
+            return new Sum(this, addend);
         }
 
         public Expression Times(int multiplier)
         {
-            return null;
+            return new Sum(_augend.Times(multiplier), _addend.Times(multiplier));
         }
     }
 }
